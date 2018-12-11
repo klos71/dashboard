@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Welcome {{ current_user.id }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <span> This is your dashboard</span>
+{% endblock %}

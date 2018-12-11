@@ -1,0 +1,27 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+
+<section class="content">
+  <header>
+  <nav id="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About</a></li>
+            {% if current_user.id != null %}
+
+                <li><a href="/protected">{{ current_user.id }}</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% endif %}
+            {% if current_user.id == null %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% block header %}
+
+    {% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>
