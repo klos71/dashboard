@@ -5,5 +5,13 @@
 {% endblock %}
 
 {% block content %}
-  <span> This is your dashboard</span>
+    <span> This is your dashboard</span>
+    <form method="post">
+    <input type="submit" value="Shutdown machine">
+    </form>
+    <div id="output-window-border">
+        <div id="output-window">
+            <p>{{ output }}</p>
+        </div>
+    </div>
 {% endblock %}

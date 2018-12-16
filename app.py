@@ -1,6 +1,8 @@
 from flask import Flask, request, redirect, url_for, render_template
 from flask_login import LoginManager, UserMixin
 import flask_login
+import subprocess
+import spur
 
 users = {'foo@bar.tld': {'password': 'secret'}, 'test@test.test': {'password': 'secret'}}
 
@@ -63,10 +65,16 @@ def login():
     return 'Bad login'
 
 
-@app.route('/protected')
+@app.route('/protected', methods=['GET', 'POST'])
 @flask_login.login_required
 def protected():
-    return render_template("user.html")
+    if request.method == 'GET':
+        return render_template("user.html")
+
+    if request.method == "POST":
+        shell = spur.SshShell(hostname="192.168.33.10", username="vagrant", password="vagrant")
+        result = shell.run(["ls"])
+        return render_template("user.html", output=result.output)
 
 
 @app.route('/logout')
