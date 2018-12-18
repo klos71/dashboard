@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+    <div id="Machine-Zone">
+        <form method="post" action="{{ url_for('addMachine')}}">
+            <h2>Add Machine</h2>
+            <label for="ipAddr">Ip Adress: </label>
+            <input type="text" name="ipAddr" placeholder="127.0.0.1">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Username">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Add new Machine">
+        </form>
+    </div>
+
+    <div id="danger-zone">
+        <form method="post" action="{{ url_for('removeAcc') }}">
+            <label for="username" style="font-size: 22px; font-family: Helvetica">Remove Account</label><br>
+            <input type="text" name="username" placeholder="Enter Username">
+            <input type="submit" value="Delete Account">
+        </form>
+    </div>
+{% endblock %}

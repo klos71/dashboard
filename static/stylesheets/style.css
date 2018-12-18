@@ -53,3 +53,20 @@ body, html{
     padding: 0px;
     margin: 0px;
 }
+#Machine-Zone{
+    border: 1px solid white;
+    width: 70%;
+    height: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 16px;
+}
+
+#danger-zone{
+    border: 1px solid red;
+    width: 75%;
+    height: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 16px;
+}
