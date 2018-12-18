@@ -5,7 +5,7 @@ conn = sqlite3.connect('database.db')
 print "Opened database successfully";
 try:
     nm = "klos"
-    addr = "klos@test.com"
+    addr = "klos@test.net"
     city = "secret"
 
     conn.execute("INSERT INTO dashboard_users (username,email,password) VALUES (?,?,?)",(nm,addr,city) )

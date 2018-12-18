@@ -54,8 +54,6 @@ def request_loader(request):
     user = User()
     user.id = email
 
-    # DO NOT ever store passwords in plaintext and always compare password
-    # hashes using constant-time comparison!
     temp = query_db('SELECT password FROM dashboard_users WHERE email = ?', [email], one=True)
     user.is_authenticated = request.form['password'] == str(temp).split("'")[1]
 
@@ -95,6 +93,7 @@ def protected():
         result = shell.run(["ls"])
         return render_template("user.html", output=result.output)
 
+
 @app.route('/remove_acc', methods=['POST'])
 @flask_login.login_required
 def removeAcc():
@@ -114,15 +113,18 @@ def removeAcc():
             conn.close()
             return render_template("register.html", msg=msg)
 
+
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
     return render_template("index.html")
 
+
 @app.route('/settings')
 @flask_login.login_required
 def settings():
     return render_template("settings.html")
+
 
 @app.route('/add_machine', methods=["POST"])
 @flask_login.login_required
@@ -171,6 +173,7 @@ def register():
         finally:
             conn.close()
             return render_template("login.html", msg=msg)
+
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
